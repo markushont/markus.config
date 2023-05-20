@@ -3,8 +3,6 @@ shell:
   program: /opt/homebrew/bin/tmux
   args:
     - -u
-    - -f
-    - ~/.config/tmux.conf
 
 key_bindings:
   - { key: Right, mods: Alt, chars: "\x1BF" }
