@@ -1,0 +1,95 @@
+#startup_mode = "Fullscreen"
+
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\""
+key = "E"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002%"
+key = "E"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002x"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00021"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00022"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00023"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00024"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00025"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00026"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00027"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00028"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00029"
+key = "Key9"
+mods = "Command"
+
+[terminal]
+
+[font]
+builtin_box_drawing = true
+
+[font.normal]
+family = "AurulentSansM Nerd Font Mono"
+style = "Regular"
+
+[terminal.shell]
+args = ["-u"]
+program = "/opt/homebrew/bin/tmux"
+
+[window]
+decorations = "buttonless"
+option_as_alt = "OnlyLeft"
+
+[keyboard]
