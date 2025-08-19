@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# git-branch-clean: delete local branches that are already merged upstream
+
+set -euo pipefail
+
+# default remote and main branch
+REMOTE="${REMOTE:-origin}"
+MAIN_BRANCH="${MAIN_BRANCH:-main}"
+
+# allow override for repos still using master
+if git show-ref --quiet refs/heads/master; then
+  MAIN_BRANCH="${MAIN_BRANCH:-master}"
+fi
+
+echo "Fetching latest from $REMOTE..."
+git fetch --prune "$REMOTE"
+
+echo "Using main branch: $MAIN_BRANCH"
+
+# make sure we’re on main before deleting
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$current_branch" != "$MAIN_BRANCH" ]]; then
+  echo "Switching to $MAIN_BRANCH..."
+  git checkout "$MAIN_BRANCH"
+  git pull "$REMOTE" "$MAIN_BRANCH"
+fi
+
+echo "Finding merged branches..."
+merged=$(git branch --merged "$MAIN_BRANCH" | grep -vE "^\*|$MAIN_BRANCH")
+
+if [[ -z "$merged" ]]; then
+  echo "No merged branches to clean 🎉"
+  exit 0
+fi
+
+echo "The following branches have been merged into $MAIN_BRANCH:"
+echo "$merged"
+
+read -p "Delete these branches? [y/N] " confirm
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+  echo "$merged" | xargs -r git branch -d
+  echo "Cleaned up merged branches ✅"
+else
+  echo "Aborted."
+fi
+

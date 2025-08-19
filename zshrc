@@ -1,3 +1,5 @@
+REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE:-$0}")" && pwd)"
+
 ## CUSTOM STUFF
 # PYTHON ENV
 export PYENV_ROOT="$HOME/.pyenv"
@@ -30,3 +32,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # LOCAL CONFIG
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
+
+# COMMON BINS
+export PATH="$REPO_DIR/bin:$PATH"
